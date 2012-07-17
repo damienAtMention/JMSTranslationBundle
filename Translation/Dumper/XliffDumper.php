@@ -93,7 +93,7 @@ class XliffDumper implements DumperInterface
         $i = 0;
         foreach ($catalogue->getDomain($domain)->all() as $id => $message) {
             $body->appendChild($unit = $doc->createElement('trans-unit'));
-            $unit->setAttribute('id', addslashes($id));
+            $unit->setAttribute('id', $id);
             $unit->setAttribute('resname', $id);
 
             if ($sources = $message->getSources()) {
