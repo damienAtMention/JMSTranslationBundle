@@ -86,7 +86,8 @@ class TranslationContainerExtractor implements FileVisitorInterface, NodeVisitor
         }
 
         if ($node instanceof Node\Stmt\UseUse) {
-            $this->useStatements[$node->alias] = implode('\\', $node->name->parts);
+            $alias = $node->alias !== null ? $node->alias->toString() : $node->name->toString();
+            $this->useStatements[$alias] = implode('\\', $node->name->parts);
 
             return;
         }
