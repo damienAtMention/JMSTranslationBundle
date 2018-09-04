@@ -99,6 +99,12 @@ class TranslationContainerExtractor implements FileVisitorInterface, NodeVisitor
         $isContainer = false;
         foreach ($node->implements as $interface) {
             $name = implode('\\', $interface->parts);
+            
+           if ('TranslationContainerInterface' === $name) {
+               $isContainer = true;
+               break;
+           }            
+            
             if (isset($this->useStatements[$name])) {
                 $name = $this->useStatements[$name];
             }
